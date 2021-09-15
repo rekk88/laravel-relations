@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str; //per far funzionare lo slug
 use App\Post; //importo il model di post
+use App\Category;
 
 class PostController extends Controller
 {
@@ -92,7 +93,9 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.posts.edit',compact('post'));
+        $categories = Category::all();
+
+        return view('admin.posts.edit',compact('post','categories'));
     }
 
     /**
