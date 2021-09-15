@@ -19,10 +19,19 @@
         <div class="mb-3">
           <label for="category" class="form-label">Categoria</label>
           <select name="category_id" id="category" class="form-control">
-            @foreach ($categories as $category)
-                <option value="{{$category->id}}">{{$category->name}}</option>
-            @endforeach
-
+            <option value="">--Seleziona una categoria--</option>
+            <option value="">--Seleziona una categoria--</option>
+              @foreach ($categories as $category)
+                  <option value="{{$category->id}}"
+                    {{-- se id del vecchio category è uguale a quello attuale
+                    allora selezionalo --}}
+                    @if ($category->id == old('category_id')) selected @endif>
+                        
+                    
+                    
+                    {{old('',$category->name)}}
+                  </option>
+              @endforeach
           </select>
         </div>
         <div class="mb-3">
