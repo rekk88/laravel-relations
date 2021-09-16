@@ -28,7 +28,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin.posts.create');
+        $categories = Category::all();
+        return view('admin.posts.create',compact('categories'));
     }
 
     /**
@@ -110,7 +111,8 @@ class PostController extends Controller
       // surprise : senza questo le validation non funzionano
       $request->validate([
         'title' => 'required|max:255',
-        'content' => 'required'
+        'content' => 'required',
+        'category_id' => 'nullable|exists:categories,id'
       ]);
       $data = $request->all();
       if($data['title'] != $post->title){

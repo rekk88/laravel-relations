@@ -25,7 +25,7 @@
                   <option value="{{$category->id}}"
                     {{-- se id del vecchio category è uguale a quello attuale
                     allora selezionalo --}}
-                    @if ($category->id == old('category_id')) selected @endif>
+                    @if ($category->id == old('category_id', $post->category_id)) selected @endif>
                         
                     
                     

@@ -19,6 +19,19 @@
       @enderror" 
       id="titolo" name="title" value="{{old('title')}}">
     </div>
+    <div class="mb-3">
+      <label for="category" class="form-label">Titolo</label>
+      <select name="category_id" id="category">
+        <option value="">--Seleziona una categoria--</option>
+        @foreach ($categories as $category)
+          <option value="{{category->id}}"
+            @if ($category->id == old($category_id))
+              selected
+            @endif
+            >{{$category->name}}</option>
+        @endforeach
+      </select>
+    </div>
     @error('title')
         <div class="alert alert-danger">{{$message}}</div>
     @enderror
